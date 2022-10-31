@@ -16,16 +16,66 @@ namespace CSharpStringsArraysAndLists
         // 1: Arrays
         // Create an array of doubles each of which holds three coordinates
         // Print these to the screen
+        public static void  newarray()
+        {
 
+            double double1 = 10d;
+            double double2 = 20.2d;
+            double double3 = 17.34d;
+            double[] doublearray = new double[3] {double1, double2, double3};
+            Console.WriteLine(string.Join(", ", doublearray));
+        }
         // 2: Byte Arrays
         // i) Create an array of bytes that represents the word hello. Convert this to a string and output the result.
         // ii) Convert the word hello both in Chinese and in English to bytes. Output the byte array. 
-
+        public static void Bytearray()
+        {
+            string newstring = "Hello";
+            byte[] bytearray = Encoding.ASCII.GetBytes(newstring);
+            Console.WriteLine(string.Join(", ", bytearray));
+            string string2 = "";
+            string result;
+            for (int i = 0; i < bytearray.Length; i++)
+            {
+                result = Convert.ToString(bytearray[i]);
+                string2 = string2 + result;
+            }
+            Console.WriteLine(string2);
+        }
         // 3: Temperatures
         // Populate a list of doubles to represent daily temperatures over two weeks
         // Calculate and output the min, max and average temperatures over the time period
         // Sort the list in ascending order and print it out
-
+        public static void Temperatures()
+        {
+            List<double> list = new List<double> ();
+            for (int i = 0; i < 14; i++)
+            {
+                Console.WriteLine("input the temperature for the next day");
+                string current1 = Console.ReadLine();
+                double current = Convert.ToDouble(current1);
+                list.Add(current);
+            }
+            double smallest = 0d;
+            double largest = 0d;
+            double total = 0d;
+            for (int j = 0; j < list.Count; j++)
+            {
+                if (list[j] < smallest)
+                {
+                    smallest = list[j];
+                }
+                if (list[j] > largest)
+                {
+                    largest = list[j];
+                }
+                total += list[j];
+            }
+            list.Sort();
+            double listlength = Convert.ToDouble(list.Count);
+            double average = total / listlength;
+            Console.WriteLine($"The smallest temperature is {smallest}, the largest temperature is {largest} and the average temperature is {average}");
+        }
         // 4: Students
         // Populate a list of student data with a firstname, surname and date of birth. Use a tuple.
         // Print the names of the oldest and youngest students
