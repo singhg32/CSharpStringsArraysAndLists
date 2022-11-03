@@ -13,7 +13,12 @@ namespace CSharpStringsArraysAndLists
             //Examples.UsingLists();
             Exercises.newarray();
             Exercises.Bytearray();
-            Exercises.Temperatures();
+            // Exercises.Temperatures();
+            Exercises.Students();
+            Exercises.PigLatin("hello world");
+            Exercises.PigLatin("Pig");
+
+
         }
 
 

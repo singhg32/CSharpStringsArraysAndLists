@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -81,15 +82,78 @@ namespace CSharpStringsArraysAndLists
         // Print the names of the oldest and youngest students
         // Print out how many students were born after 2010
         // Create a new list of strings with the full names of all the students and print this out     
+        public static void Students()
+        {
+            DateTime date = DateTime.Today;
+            DateTime date2 = new DateTime(2007, 05, 09, 9, 15, 0);
+            DateTime date3 = new DateTime(2012, 07, 12, 10, 20, 0);
+
+            List<DateTime> DatesofBirth = new List<DateTime> { date, date2, date3 };
+            List<string> FirstNames = new List<string> { "Name1, Name2, Name3" };
+            List<string> Surnames = new List<string> { "Surname1, Surname2, Surname3" };
+            List<string> Post2010 = new List<string>();
+            DateTime largestdate = new DateTime();
+            DateTime smallestdate = new DateTime();
+
+            for (int i = 0; i < DatesofBirth.Count; i++)
+            {
+                int result = DatesofBirth[i].Year;
+
+                if (DatesofBirth[i] > largestdate)
+                {
+                    largestdate = DatesofBirth[i];
+                }
+                else if (DatesofBirth[i] < smallestdate)
+                {
+                    smallestdate = DatesofBirth[i];
+                }
+                if (result > 2010)
+                {
+                    string name = FirstNames[i];
+                    string surname = Surnames[i];
+                    name += " " + surname;
+                    Post2010.Add(name);
+                    Console.WriteLine($"{name} was born after 2010");
+                }
+              
+            }
+            Console.WriteLine(string.Join(", ", Post2010));
+
+        }
+
 
         // 5: Pig Latin
         // Move the first letter of each word to the end of it, then add "ay" to the end of the word. 
         // Leave punctuation marks untouched.
         // The cat sat on the mat. => heTay atcay noay hetay atmay.
-        public static string PigLatin(string input)
+        public static void PigLatin(string input1)
         {
-            throw new NotImplementedException();
+            string[] input2 = input1.Split(' ');
+            List<string> resultlist = new List<string>();
+                foreach (string input in input2)
+                {
+                    string firstletter = "";
+                    string result = "";
+                    for (int i = 0; i < input.Length; i++)
+                    {
+                        char c = input[i];
+                        if (i != 0)
+                        {
+                            string s = c.ToString();
+                            result += s;
+                        }
+                        else
+                        {
+                            firstletter = input[i].ToString();
+                        }
+                    }
+                    result += firstletter.ToString();
+                    result += "ay";
+                resultlist.Add(result);
+                }
+            Console.WriteLine(string.Join(" ", resultlist));
         }
+    
 
         // 6. Mexican wave
         //  1.  The input string will always be lower case but maybe empty.
